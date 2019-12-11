@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamenFinalWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contactos">
+    <Key>
+      <PropertyRef Name="IdContacto" />
+    </Key>
+    <Property Name="IdContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreC" Type="varchar" MaxLength="30" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="Identificacion" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Visitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Motivo_visita" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha_visita" Type="datetime" />
+    <Property Name="HoraEntrada" Type="time" Precision="7" />
+    <Property Name="HoraSalida" Type="time" Precision="7" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="80" />
+    <Property Name="IdContacto" Type="int" />
+  </EntityType>
+  <Association Name="FK_Cont_Vis">
+    <End Role="Contactos" Type="Self.Contactos" Multiplicity="0..1" />
+    <End Role="Visitas" Type="Self.Visitas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contactos">
+        <PropertyRef Name="IdContacto" />
+      </Principal>
+      <Dependent Role="Visitas">
+        <PropertyRef Name="IdContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamenFinalWebModelStoreContainer">
+    <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visitas" EntityType="Self.Visitas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cont_Vis" Association="Self.FK_Cont_Vis">
+      <End Role="Contactos" EntitySet="Contactos" />
+      <End Role="Visitas" EntitySet="Visitas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

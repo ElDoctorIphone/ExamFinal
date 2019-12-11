@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamenFinalWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contactos">
+    <Key>
+      <PropertyRef Name="IdContacto" />
+    </Key>
+    <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Identificacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Visitas" Relationship="Self.FK_Cont_Vis" FromRole="Contactos" ToRole="Visitas" />
+  </EntityType>
+  <EntityType Name="Visitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Motivo_visita" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_visita" Type="DateTime" Precision="3" />
+    <Property Name="HoraEntrada" Type="Time" Precision="7" />
+    <Property Name="HoraSalida" Type="Time" Precision="7" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="IdContacto" Type="Int32" />
+    <NavigationProperty Name="Contactos" Relationship="Self.FK_Cont_Vis" FromRole="Visitas" ToRole="Contactos" />
+  </EntityType>
+  <Association Name="FK_Cont_Vis">
+    <End Role="Contactos" Type="Self.Contactos" Multiplicity="0..1" />
+    <End Role="Visitas" Type="Self.Visitas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contactos">
+        <PropertyRef Name="IdContacto" />
+      </Principal>
+      <Dependent Role="Visitas">
+        <PropertyRef Name="IdContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamenFinalWebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contactos" EntityType="Self.Contactos" />
+    <EntitySet Name="Visitas" EntityType="Self.Visitas" />
+    <AssociationSet Name="FK_Cont_Vis" Association="Self.FK_Cont_Vis">
+      <End Role="Contactos" EntitySet="Contactos" />
+      <End Role="Visitas" EntitySet="Visitas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

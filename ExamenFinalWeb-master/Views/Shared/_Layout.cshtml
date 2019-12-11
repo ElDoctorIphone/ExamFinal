@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+    
+    <div class="blue lighten-4 navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <div>   </div>
+            <div class="navbar-collapse collapse center-align">
+                <ul class="nav navbar-nav" style="margin-left:50px">
+                    <li class="white">@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li class="white">@Html.ActionLink("Contacto", "Index", "Contactos")</li>
+                    <li class="white">@Html.ActionLink("Visitas", "Index", "Visitas")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="margin-bottom: 10px">
+        @RenderBody()
+        <hr />
+    </div>
+        <footer class="page-footer blue lighten-4 " style="margin-top: 200px">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Observa lo mejor de nosotros</h5>
+                        <p class="grey-text text-lighten-4">Disfruta la experiencias</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">OCEAN </h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Acuarios</a></li>
+                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    ©Gracias por tu visita
+                    <a class="grey-text text-lighten-4 right" href="#!">OCEAN WORLD</a>
+                </div>
+            </div>
+        </footer>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+</html>

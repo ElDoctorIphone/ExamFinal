@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ExamenFinalWeb.Models.Visitas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p class="btn waves-effect teal lighten-5" >
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table highlight">
+    <tr>
+        <th>
+            <p>Motivo de visita</p>
+        </th>
+        <th>
+            <p>Fecha de visita</p>
+        </th>
+        <th>
+            <p>Hora de entrada</p>
+        </th>
+        <th>
+            <p>Hora de Salida</p>
+        </th>
+        <th>
+            <p>Nombre Completo</p>
+        </th>
+        <th>
+            <p>Nombre del Contacto</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Motivo_visita)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fecha_visita)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HoraEntrada)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HoraSalida)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NombreCompleto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Contactos.NombreC)
+    </td>
+   
+    <td class="btn waves-effect teal lighten-5 btn-small"> 
+        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+    </td>
+    <td class="btn amber lighten-2 btn-small">
+        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+    </td>
+    <td class="btn red lighten-1 btn-small">
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+    </td>
+
+    
+</tr>
+}
+
+</table>

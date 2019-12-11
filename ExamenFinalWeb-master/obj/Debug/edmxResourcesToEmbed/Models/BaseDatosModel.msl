@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExamenFinalWebModelStoreContainer" CdmEntityContainer="ExamenFinalWebEntities">
+    <EntitySetMapping Name="Contactos">
+      <EntityTypeMapping TypeName="ExamenFinalWebModel.Contactos">
+        <MappingFragment StoreEntitySet="Contactos">
+          <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
+          <ScalarProperty Name="NombreC" ColumnName="NombreC" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visitas">
+      <EntityTypeMapping TypeName="ExamenFinalWebModel.Visitas">
+        <MappingFragment StoreEntitySet="Visitas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Motivo_visita" ColumnName="Motivo_visita" />
+          <ScalarProperty Name="Fecha_visita" ColumnName="Fecha_visita" />
+          <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+          <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

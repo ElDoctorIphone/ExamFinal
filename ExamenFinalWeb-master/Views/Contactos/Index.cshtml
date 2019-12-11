@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ExamenFinalWeb.Models.Contactos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p  class="btn waves-effect teal lighten-5">
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NombreC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Apellido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Identificacion)
+    </td>
+    <td  class="btn waves-effect teal lighten-5 btn-small">
+
+    <td class="btn waves-effect teal lighten-5 btn-small">
+        @Html.ActionLink("Editar", "Edit", new { id = item.IdContacto }) |
+    </td>
+    <td class="btn amber lighten-2 btn-small">
+        @Html.ActionLink("Detalles", "Details", new { id = item.IdContacto }) |
+    </td>
+    <td class="btn red lighten-1 btn-small">
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdContacto })
+    </td>
+    
+</tr>
+}
+
+</table>
